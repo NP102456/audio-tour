@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tour Locations</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+
+background-image:url("13.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+min-height:100vh;
+}
+
+.overlay{
+
+background:rgba(0,0,0,0.55);
+min-height:100vh;
+
+padding:40px 20px;
+
+}
+
+/* ปุ่มกลับ */
+
+.back{
+
+position:absolute;
+top:20px;
+left:20px;
+
+padding:10px 16px;
+
+border-radius:10px;
+
+background:rgba(255,255,255,0.2);
+
+text-decoration:none;
+
+color:white;
+
+font-size:14px;
+
+transition:0.3s;
+
+}
+
+.back:hover{
+
+background:rgba(255,255,255,0.35);
+
+}
+
+/* title */
+
+h1{
+
+text-align:center;
+margin-bottom:30px;
+font-size:36px;
+
+}
+
+/* grid */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1fr;
+
+gap:18px;
+
+max-width:500px;
+margin:auto;
+
+}
+
+/* card */
+
+.card{
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(8px);
+
+padding:20px;
+
+border-radius:15px;
+
+text-decoration:none;
+
+color:white;
+
+font-size:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px) scale(1.03);
+
+background:rgba(255,255,255,0.2);
+
+}
+
+.number{
+
+font-size:22px;
+font-weight:bold;
+
+margin-bottom:5px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="back" href="index.html">
+⬅ กลับ
+</a>
+
+<div class="overlay">
+
+<h1> เลือกสถานที่</h1>
+
+<div class="grid">
+
+<a class="card" href="place1.html">
+
+<div class="number">1️⃣</div>
+
+สกายวอร์คพระใหญ่ภูคกงิ้ว
+
+</a>
+
+<a class="card" href="place2.html">
+
+<div class="number">2️⃣</div>
+
+วิสาหกิจชุมชนจานกาบหมากท่าดีหมี
+
+</a>
+
+<a class="card" href="place3.html">
+
+<div class="number">3️⃣</div>
+
+วัดจอมมณี
+
+</a>
+
+<a class="card" href="place4.html">
+
+<div class="number">4️⃣</div>
+
+ปางช้างเผือกเชียงคาน
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
