@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ผลิตภัณฑ์ชุมชนบ้านท่าดีหมี</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+
+background:black;
+
+font-family:"Segoe UI", Arial;
+
+display:flex;
+justify-content:center;
+
+}
+
+/* mobile frame */
+
+.overlay{
+
+width:100%;
+max-width:420px;
+
+min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("p5.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+padding:30px 20px;
+
+position:relative;
+
+color:white;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+}
+
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+
+}
+
+/* back */
+
+.back{
+
+position:absolute;
+top:15px;
+left:15px;
+
+background:rgba(255,255,255,0.2);
+
+padding:8px 12px;
+
+border-radius:10px;
+
+color:white;
+text-decoration:none;
+
+}
+
+/* title */
+
+h1{
+
+margin-top:70px;
+
+font-size:26px;
+
+text-align:center;
+
+}
+
+/* description */
+
+.desc{
+
+margin-top:20px;
+
+background:rgba(255,255,255,0.15);
+
+padding:18px;
+
+border-radius:15px;
+
+font-size:15px;
+
+text-align:center;
+
+line-height:1.6;
+
+}
+
+/* listen */
+
+.listen{
+
+margin-top:35px;
+
+background:linear-gradient(45deg,#ff9800,#ffb74d);
+
+color:white;
+
+font-size:16px;
+
+padding:14px 28px;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+}
+
+/* nav */
+
+.nav{
+
+margin-top:25px;
+
+display:flex;
+gap:20px;
+
+}
+
+.prev{
+
+background:rgba(255,255,255,0.25);
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.next{
+
+background:linear-gradient(45deg,#00bcd4,#26c6da);
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="lang-box">
+<select onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
+
+<a class="back" id="backBtn" href="tour.html">⬅ กลับ</a>
+
+<h1 id="title">ผลิตภัณฑ์ชุมชนบ้านท่าดีหมี</h1>
+
+<div class="desc" id="desc">
+
+บ้านท่าดีหมีเป็นชุมชนที่มีการรวมกลุ่มของชาวบ้าน
+เพื่อพัฒนาผลิตภัณฑ์ท้องถิ่นและสร้างรายได้ให้กับชุมชน
+
+หนึ่งในผลิตภัณฑ์ที่โดดเด่นคือการนำวัสดุธรรมชาติ
+เช่น กาบหมาก มาผลิตเป็นจานและภาชนะที่เป็นมิตรต่อสิ่งแวดล้อม
+
+นักท่องเที่ยวสามารถเข้ามาเรียนรู้กระบวนการผลิต
+และเลือกซื้อสินค้าชุมชนเพื่อสนับสนุนเศรษฐกิจท้องถิ่นได้
+
+</div>
+
+<button class="listen" id="listenBtn" onclick="playAudio()">
+🎧 ฟังคำบรรยาย
+</button>
+
+<div class="nav">
+
+<button class="prev" id="prevBtn" onclick="prev()">⬅ ก่อนหน้า</button>
+
+<button class="next" id="nextBtn" onclick="next()">➡ ถัดไป</button>
+
+</div>
+
+<audio id="voice"></audio>
+
+</div>
+
+<script>
+
+function setLang(lang){
+localStorage.setItem("lang",lang)
+changeLang(lang)
+}
+
+function changeLang(lang){
+
+let voice=document.getElementById("voice")
+
+/* ให้ dropdown เปลี่ยนตามภาษาที่เลือก */
+document.querySelector("select").value = lang
+
+if(lang==="en"){
+
+document.getElementById("title").innerText="Tha Di Mi Community Products"
+
+document.getElementById("desc").innerText =
+"The Ban Tha Dee Mee Betel Nut Leaf Sheaf Community Enterprise (Tha Dee Mee Model) was established on November 17, 2018, with a strong vision for environmental sustainability. As Ban Tha Dee Mee developed into a popular destination with its iconic Skywalk, the community became concerned about the rise of non-biodegradable waste and its impact on the local ecosystem.To combat this, the group initiated the transformation of betel nut leaf sheaths and other natural materials into eco-friendly tableware. This initiative does more than just reduce pollution; it provides a practical solution for waste management while generating sustainable income for local residents. It is a true testament to how community-led projects can balance tourism growth with environmental preservation."
+document.getElementById("listenBtn").innerText="🎧 Listen"
+document.getElementById("prevBtn").innerText="⬅ Previous"
+document.getElementById("nextBtn").innerText="➡ Next"
+document.getElementById("backBtn").innerText="⬅ Back"
+
+voice.src="PE5.mp3"
+
+}
+else{
+
+document.getElementById("title").innerText="ผลิตภัณฑ์ชุมชนบ้านท่าดีหมี"
+
+document.getElementById("desc").innerText =
+"วิสาหกิจชุมชนจานกาบหมากท่าดีหมี (ท่าดีหมีโมเดล) เริ่มต้นก้าวแรกเมื่อวันที่ 17 พฤศจิกายน 2561 ด้วยความมุ่งมั่นที่จะแก้ปัญหาขยะในแหล่งท่องเที่ยว โดยเฉพาะบริเวณสกายวอล์คเชียงคานที่กำลังเติบโต ทางกลุ่มได้เล็งเห็นว่าวัสดุที่ไม่ย่อยสลายอาจส่งผลกระทบต่อสิ่งแวดล้อมและมลพิษในระยะยาวจึงได้เกิดการรวมตัวกันแปรรูป 'กาบหมาก' และวัสดุธรรมชาติในท้องถิ่นให้กลายเป็นภาชนะที่สวยงามและเป็นมิตรต่อโลก ผลิตภัณฑ์นี้นอกจากจะช่วยลดภาระในการจัดการขยะให้กับชุมชนแล้ว ยังเป็นการสร้างอาชีพและกระจายรายได้ให้กับสมาชิกในหมู่บ้านท่าดีหมี ทำให้การท่องเที่ยวและการอนุรักษ์ธรรมชาติสามารถเดินหน้าไปพร้อมกันได้อย่างยั่งยืน"
+
+document.getElementById("listenBtn").innerText="🎧 ฟังคำบรรยาย"
+document.getElementById("prevBtn").innerText="⬅ ก่อนหน้า"
+document.getElementById("nextBtn").innerText="➡ ถัดไป"
+document.getElementById("backBtn").innerText="⬅ กลับ"
+
+voice.src="PT5.mp3"
+
+}
+
+}
+
+/* เล่นเสียง */
+
+function playAudio(){
+
+let voice=document.getElementById("voice")
+voice.currentTime = 0
+voice.play()
+
+}
+
+/* navigation */
+
+function prev(){
+window.location.href="place4.html"
+}
+
+function next(){
+window.location.href="place6.html"
+}
+
+/* โหลดภาษา */
+
+window.onload=function(){
+
+let lang = localStorage.getItem("lang") || "th"
+changeLang(lang)
+
+}
+
+</script>
+</body>
+</html>
+

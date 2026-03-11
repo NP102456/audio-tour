@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -6,207 +7,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>วัดจอมมณี</title>
+<title>พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์</title>
 
 <style>
 
 *{
 box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-margin:0;
-font-family:"Segoe UI", Arial;
-color:white;
 
-background-image:url("p3.jpg");
+background:black;
+
+font-family:"Segoe UI", Arial;
+
+display:flex;
+justify-content:center;
+
+}
+
+/* mobile frame */
+
+.overlay{
+
+width:100%;
+max-width:420px;
+
+min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("p3.png");
+
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
-}
 
-/* overlay */
+padding:30px 20px;
 
-.overlay{
-background:rgba(0,0,0,0.55);
-min-height:100vh;
+position:relative;
+
+color:white;
 
 display:flex;
 flex-direction:column;
-
 align-items:center;
-justify-content:center;
 
-padding:40px 20px;
-
-position:relative;
 }
 
-/* ปุ่มกลับ */
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+
+}
+
+/* back */
 
 .back{
+
 position:absolute;
-top:20px;
-left:20px;
-
-padding:10px 18px;
-
-border-radius:30px;
+top:15px;
+left:15px;
 
 background:rgba(255,255,255,0.2);
 
-backdrop-filter:blur(8px);
+padding:8px 12px;
+
+border-radius:10px;
 
 color:white;
 text-decoration:none;
 
-font-size:14px;
-
-transition:0.3s;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-.back:hover{
-background:rgba(255,255,255,0.35);
-transform:scale(1.05);
 }
 
 /* title */
 
 h1{
+
+margin-top:70px;
+
+font-size:24px;
+
 text-align:center;
-font-size:34px;
-margin-bottom:20px;
-text-shadow:0 3px 10px rgba(0,0,0,0.6);
+
 }
 
 /* description */
 
-.text{
-max-width:650px;
+.desc{
 
-background:rgba(255,255,255,0.12);
-backdrop-filter:blur(8px);
+margin-top:20px;
 
-padding:25px;
+background:rgba(255,255,255,0.15);
+
+padding:18px;
 
 border-radius:15px;
 
-font-size:17px;
-line-height:1.7;
+font-size:15px;
 
 text-align:center;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
+line-height:1.6;
 
-/* buttons */
-
-.buttons{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:20px;
-margin-top:35px;
 }
 
 /* listen */
 
 .listen{
+
+margin-top:35px;
+
 background:linear-gradient(45deg,#ff9800,#ffb74d);
+
 color:white;
-font-size:18px;
-padding:16px 32px;
+
+font-size:16px;
+
+padding:14px 28px;
+
 border:none;
-border-radius:40px;
+
+border-radius:30px;
+
 cursor:pointer;
-box-shadow:0 8px 20px rgba(0,0,0,0.4);
-transition:0.3s;
+
 }
 
-.listen:hover{
-transform:scale(1.08);
-}
-
-/* navigation */
+/* nav */
 
 .nav{
-display:flex;
-justify-content:space-between;
-width:320px;
-}
 
-/* prev */
+margin-top:25px;
+
+display:flex;
+gap:20px;
+
+}
 
 .prev{
-background:rgba(255,255,255,0.15);
-color:white;
+
+background:rgba(255,255,255,0.25);
 
 border:none;
 
-padding:14px 24px;
+padding:12px 20px;
 
-border-radius:30px;
+border-radius:25px;
 
-font-size:16px;
+color:white;
 
 cursor:pointer;
 
-backdrop-filter:blur(6px);
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-transition:0.3s;
 }
-
-.prev:hover{
-background:rgba(255,255,255,0.3);
-transform:translateY(-3px);
-}
-
-/* next */
 
 .next{
-background:linear-gradient(45deg,#00bcd4,#26c6da);
 
-color:white;
+background:linear-gradient(45deg,#00bcd4,#26c6da);
 
 border:none;
 
-padding:14px 24px;
+padding:12px 20px;
 
-border-radius:30px;
+border-radius:25px;
 
-font-size:16px;
+color:white;
 
 cursor:pointer;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-transition:0.3s;
-}
-
-.next:hover{
-transform:translateY(-3px);
-}
-
-/* mobile */
-
-@media(max-width:600px){
-
-h1{
-font-size:26px;
-}
-
-.text{
-font-size:15px;
-padding:18px;
-}
-
-.nav{
-width:260px;
-}
 
 }
 
@@ -218,43 +199,106 @@ width:260px;
 
 <div class="overlay">
 
-<a class="back" href="tour.html">⬅ กลับ</a>
+<div class="lang-box">
+<select onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
 
-<h1>วัดจอมมณี</h1>
+<a class="back" id="backBtn" href="tour.html">⬅ กลับ</a>
 
-<div class="text">
+<h1 id="title">พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์</h1>
 
-วัดจอมมณีเป็นวัดเก่าแก่ที่มีความสำคัญทางศาสนาและวัฒนธรรม
-ภายในวัดมีสถาปัตยกรรมที่งดงามและบรรยากาศที่เงียบสงบ
-เหมาะสำหรับการสักการะพระพุทธรูปและเรียนรู้ประวัติศาสตร์ท้องถิ่น
+<div class="desc" id="desc">
+
+พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์ หรือที่เรียกว่า
+"พระใหญ่ภูคกงิ้ว" เป็นพระพุทธรูปขนาดใหญ่บนยอดภูคกงิ้ว
+อำเภอเชียงคาน จังหวัดเลย
+
+มีความสูงประมาณ 19 เมตร
+สร้างขึ้นเพื่อเฉลิมพระเกียรติรัชกาลที่ 9
+
+เป็นจุดชมวิวที่สามารถมองเห็นแม่น้ำโขง
+และทิวทัศน์ของประเทศไทยและลาวได้อย่างสวยงาม
 
 </div>
 
-<div class="buttons">
-
-<button class="listen" onclick="playAudio()">
+<button class="listen" id="listenBtn" onclick="playAudio()">
 🎧 ฟังคำบรรยาย
 </button>
 
 <div class="nav">
 
-<button class="prev" onclick="prev()">⬅ ก่อนหน้า</button>
+<button class="prev" id="prevBtn" onclick="prev()">⬅ ก่อนหน้า</button>
 
-<button class="next" onclick="next()">➡ ถัดไป</button>
-
-</div>
+<button class="next" id="nextBtn" onclick="next()">➡ ถัดไป</button>
 
 </div>
 
-<audio id="voice" src="place3-th.mp3"></audio>
+<audio id="voice"></audio>
 
 </div>
 
 <script>
 
-function playAudio(){
-document.getElementById("voice").play()
+function setLang(lang){
+localStorage.setItem("lang",lang)
+changeLang(lang)
 }
+
+function changeLang(lang){
+
+let voice=document.getElementById("voice")
+
+/* ทำให้ dropdown เปลี่ยนตามภาษา */
+document.querySelector("select").value=lang
+
+if(lang==="en"){
+
+document.getElementById("title").innerText="Phra Phuttha Nawamin Mongkhon Lila Twin Nakorn Apirak"
+
+document.getElementById("desc").innerText=
+"Phra Phuttha Nawamin Mongkhon Lila Thawin Khraphirak, widely known as Phra Yai Phu Khok Ngiew, is a magnificent walking Buddha statue finished in radiant gold fiber and resin. It stands majestically atop Phu Khok Ngiew, marking the exact entry point where the Mekong River first flows into Northeastern Thailand.This sacred landmark holds immense spiritual value, as its crown enshrines Royal-granted Buddha relics from King Rama IX and the Queen Mother. Furthermore, its base houses holy relics from six iconic Isan pagodas, including Phra That Phanom and Phra That Si Song Rak.From this vantage point, visitors can witness the stunning 'Two-Colored River' where the Hueang River joins the Mekong. A highlights not to be missed is the annual Songkran festival, featuring the unique tradition of offering giant 'Ton Mak Beng' (marigold flower trays), a beautiful display of the deep faith and cultural heritage of the Ban Tha Dee Mee community."
+document.getElementById("listenBtn").innerText="🎧 Listen"
+document.getElementById("prevBtn").innerText="⬅ Previous"
+document.getElementById("nextBtn").innerText="➡ Next"
+document.getElementById("backBtn").innerText="⬅ Back"
+
+voice.src="PE3.mp3"
+
+}
+
+else{
+
+document.getElementById("title").innerText="พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์"
+
+document.getElementById("desc").innerText=
+"พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์ หรือที่ชาวบ้านรู้จักกันในชื่อ พระใหญ่ภูคกงิ้ว เป็นพระพุทธรูปปางลีลาประทานพรสีทองอร่ามที่หล่อด้วยไฟเบอร์ผสมเรซิ่นอย่างประณีต องค์พระประดิษฐานอยู่บนยอดภูคกงิ้ว ซึ่งเป็นจุดยุทธศาสตร์สำคัญที่แม่น้ำโขงไหลผ่านเข้าสู่ภาคอีสานของประเทศไทยเป็นจุดแรกความพิเศษขององค์พระนี้คือการได้รับพระราชทานพระบรมสารีริกธาตุจากพระบาทสมเด็จพระเจ้าอยู่หัว และสมเด็จพระนางเจ้าฯ พระบรมราชินีนาถ (รัชกาลที่ 9) มาบรรจุไว้ในพระเกศ และที่ฐานองค์พระยังบรรจุบรมธาตุศักดิ์สิทธิ์จากพระธาตุชื่อดัง 6 แห่งทั่วภาคอีสาน ได้แก่ พระธาตุพนม, พระธาตุเชิงชุม, พระธาตุบังพวน, พระธาตุขามแก่น, พระธาตุนาดูน และพระธาตุศรีสองรักจากจุดนี้ นักท่องเที่ยวสามารถมองเห็นความมหัศจรรย์ของแม่น้ำสองสีที่แม่น้ำเหืองไหลมาบรรจบกับแม่น้ำโขง พร้อมสัมผัสประเพณีอันเป็นเอกลักษณ์อย่างการถวาย 'ต้นหมากเบ็งยักษ์' ในช่วงเทศกาลสงกรานต์ ซึ่งสะท้อนถึงศรัทธาอันแรงกล้าของชาวบ้านท่าดีหมีที่มีต่อพระพุทธศาสนาและแม่น้ำสายนี้ครับ"
+
+document.getElementById("listenBtn").innerText="🎧 ฟังคำบรรยาย"
+document.getElementById("prevBtn").innerText="⬅ ก่อนหน้า"
+document.getElementById("nextBtn").innerText="➡ ถัดไป"
+document.getElementById("backBtn").innerText="⬅ กลับ"
+
+voice.src="PT3.mp3"
+
+}
+
+}
+
+/* เล่นเสียง */
+
+function playAudio(){
+
+let voice=document.getElementById("voice")
+
+voice.currentTime=0
+voice.play()
+
+}
+
+/* navigation */
 
 function prev(){
 window.location.href="place2.html"
@@ -264,7 +308,17 @@ function next(){
 window.location.href="place4.html"
 }
 
+/* โหลดภาษา */
+
+window.onload=function(){
+
+let lang=localStorage.getItem("lang") || "th"
+changeLang(lang)
+
+}
+
 </script>
 
 </body>
 </html>
+

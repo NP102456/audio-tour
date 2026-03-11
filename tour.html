@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -10,25 +11,65 @@
 
 <style>
 
-body{
+*{
+box-sizing:border-box;
 margin:0;
-font-family:Arial;
+padding:0;
+}
+
+body{
+
+font-family:"Segoe UI", Arial, sans-serif;
 color:white;
 
-background-image:url("13.png");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
+height:100vh;
 
-min-height:100vh;
+background:black;
+
+display:flex;
+justify-content:center;
+
 }
+
+/* กรอบมือถือ */
 
 .overlay{
 
-background:rgba(0,0,0,0.55);
+width:100%;
+max-width:420px;
+
 min-height:100vh;
 
-padding:40px 20px;
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("tour.png");
+
+background-size:100% 100%;
+background-position:center;
+background-repeat:no-repeat;
+
+padding:30px 20px;
+
+position:relative;
+
+}
+
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+font-size:14px;
 
 }
 
@@ -37,12 +78,13 @@ padding:40px 20px;
 .back{
 
 position:absolute;
+
 top:20px;
 left:20px;
 
-padding:10px 16px;
+padding:8px 14px;
 
-border-radius:10px;
+border-radius:12px;
 
 background:rgba(255,255,255,0.2);
 
@@ -52,14 +94,6 @@ color:white;
 
 font-size:14px;
 
-transition:0.3s;
-
-}
-
-.back:hover{
-
-background:rgba(255,255,255,0.35);
-
 }
 
 /* title */
@@ -67,8 +101,11 @@ background:rgba(255,255,255,0.35);
 h1{
 
 text-align:center;
-margin-bottom:30px;
-font-size:36px;
+
+margin-top:50px;
+margin-bottom:25px;
+
+font-size:28px;
 
 }
 
@@ -80,10 +117,7 @@ display:grid;
 
 grid-template-columns:1fr;
 
-gap:18px;
-
-max-width:500px;
-margin:auto;
+gap:16px;
 
 }
 
@@ -91,40 +125,44 @@ margin:auto;
 
 .card{
 
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.15);
 
-backdrop-filter:blur(8px);
+padding:18px;
 
-padding:20px;
-
-border-radius:15px;
+border-radius:16px;
 
 text-decoration:none;
 
 color:white;
 
-font-size:18px;
+font-size:17px;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+box-shadow:0 8px 20px rgba(0,0,0,0.35);
 
-transition:0.3s;
+display:block;
+
+transition:0.2s;
 
 }
 
 .card:hover{
 
-transform:translateY(-5px) scale(1.03);
+transform:scale(1.02);
 
-background:rgba(255,255,255,0.2);
+}
+
+.card:active{
+
+transform:scale(0.97);
 
 }
 
 .number{
 
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 
-margin-bottom:5px;
+margin-bottom:6px;
 
 }
 
@@ -134,51 +172,59 @@ margin-bottom:5px;
 
 <body>
 
-<a class="back" href="index.html">
-⬅ กลับ
-</a>
-
 <div class="overlay">
 
-<h1> เลือกสถานที่</h1>
+<div class="lang-box">
+<select onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
+
+<a class="back" href="index.html">
+⬅ 
+</a>
+
+<h1 id="title">เลือกสถานที่ท่องเที่ยว</h1>
 
 <div class="grid">
 
 <a class="card" href="place1.html">
-
 <div class="number">1️⃣</div>
-
-สกายวอร์คพระใหญ่ภูคกงิ้ว
-
+<span id="p1">จุดแลนด์มาร์คสกายวอล์ค</span>
 </a>
 
 <a class="card" href="place2.html">
-
 <div class="number">2️⃣</div>
-
-วิสาหกิจชุมชนจานกาบหมากท่าดีหมี
-
+<span id="p2">แม่น้ำเหือง</span>
 </a>
 
 <a class="card" href="place3.html">
-
 <div class="number">3️⃣</div>
-
-วัดจอมมณี
-
+<span id="p3">พระพุทธนวมินทรมงคลลีลาทวินคราภิรักษ์</span>
 </a>
 
 <a class="card" href="place4.html">
-
 <div class="number">4️⃣</div>
+<span id="p4">วัดจอมมณี</span>
+</a>
 
-ปางช้างเผือกเชียงคาน
+<a class="card" href="place5.html">
+<div class="number">5️⃣</div>
+<span id="p5">ผลิตภัณฑ์ชุมชนบ้านท่าดีหมี</span>
+</a>
 
+<a class="card" href="place6.html">
+<div class="number">6️⃣</div>
+<span id="p6">ปางช้างเผือกเชียงคาน</span>
 </a>
 
 </div>
 
 </div>
 
+<script src="tour.js"></script>
+
 </body>
 </html>
+

@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ปางช้างเผือกเชียงคาน</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+
+background:black;
+
+font-family:"Segoe UI", Arial;
+
+display:flex;
+justify-content:center;
+
+}
+
+/* mobile frame */
+
+.overlay{
+
+width:100%;
+max-width:420px;
+
+min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("p6.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+padding:30px 20px;
+
+position:relative;
+
+color:white;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+}
+
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+
+}
+
+/* back */
+
+.back{
+
+position:absolute;
+top:15px;
+left:15px;
+
+background:rgba(255,255,255,0.2);
+
+padding:8px 12px;
+
+border-radius:10px;
+
+color:white;
+text-decoration:none;
+
+}
+
+/* title */
+
+h1{
+
+margin-top:70px;
+
+font-size:26px;
+
+text-align:center;
+
+}
+
+/* description */
+
+.desc{
+
+margin-top:20px;
+
+background:rgba(255,255,255,0.15);
+
+padding:18px;
+
+border-radius:15px;
+
+font-size:15px;
+
+text-align:center;
+
+line-height:1.6;
+
+}
+
+/* listen */
+
+.listen{
+
+margin-top:35px;
+
+background:linear-gradient(45deg,#ff9800,#ffb74d);
+
+color:white;
+
+font-size:16px;
+
+padding:14px 28px;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+}
+
+/* nav */
+
+.nav{
+
+margin-top:25px;
+
+display:flex;
+gap:20px;
+
+}
+
+.prev{
+
+background:rgba(255,255,255,0.25);
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.finish{
+
+background:linear-gradient(45deg,#4caf50,#66bb6a);
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="lang-box">
+<select onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
+
+<a class="back" id="backBtn" href="tour.html">⬅ กลับ</a>
+
+<h1 id="title">ปางช้างเผือกเชียงคาน</h1>
+
+<div class="desc" id="desc">
+
+ปางช้างเผือกเชียงคาน เป็นแหล่งท่องเที่ยวเชิงอนุรักษ์
+ที่เปิดโอกาสให้นักท่องเที่ยวได้เรียนรู้เกี่ยวกับช้าง
+และการดูแลช้างอย่างถูกวิธี
+
+นักท่องเที่ยวสามารถสัมผัสประสบการณ์ใกล้ชิดกับช้าง
+เรียนรู้วิถีชีวิตของควาญช้าง
+และกิจกรรมที่ช่วยส่งเสริมการอนุรักษ์สัตว์ป่า
+
+สถานที่แห่งนี้จึงเป็นอีกหนึ่งจุดหมายสำคัญ
+ของนักท่องเที่ยวที่มาเยือนอำเภอเชียงคาน จังหวัดเลย
+
+</div>
+
+<button class="listen" id="listenBtn" onclick="playAudio()">
+🎧 ฟังคำบรรยาย
+</button>
+
+<div class="nav">
+
+<button class="prev" id="prevBtn" onclick="prev()">⬅ ก่อนหน้า</button>
+
+<button class="finish" id="finishBtn" onclick="finish()">🏠 เลือกสถานที่</button>
+
+</div>
+
+<audio id="voice"></audio>
+
+</div>
+
+<script>
+
+function setLang(lang){
+localStorage.setItem("lang",lang)
+changeLang(lang)
+}
+
+function changeLang(lang){
+
+let voice = document.getElementById("voice")
+
+/* ให้ dropdown เปลี่ยนตามภาษาที่เลือก */
+document.querySelector("select").value = lang
+
+if(lang === "en"){
+
+document.getElementById("title").innerText="Chiang Khan White Elephant Camp"
+
+document.getElementById("desc").innerText =
+"Pang Chang Phueak Chiang Khan is an ethical elephant sanctuary that prioritizes the welfare of elephants and promotes sustainable tourism. Rather than offering traditional elephant riding or shows, this center provides a compassionate and educational experience that allows visitors to understand and respect these gentle giants.You can engage in unique and intimate activities, such as preparing nutritious food, hand-feeding the elephants, and accompanying them for mud spas and river bathing along the scenic Mekong. Furthermore, the experience offers a deep insight into the meaningful connection between the elephants and their 'Mahouts' (keepers), who care for them as family. Located in the beautiful and tranquil landscapes of Chiang Khan, this is an authentic, respectful way to appreciate Thailand’s majestic elephants."
+
+document.getElementById("listenBtn").innerText="🎧 Listen"
+document.getElementById("prevBtn").innerText="⬅ Previous"
+document.getElementById("finishBtn").innerText="🏠 Choose Places"
+document.getElementById("backBtn").innerText="⬅ Back"
+
+voice.src="PE6.mp3"
+
+}
+else{
+
+document.getElementById("title").innerText="ปางช้างเผือกเชียงคาน"
+
+document.getElementById("desc").innerText =
+"ปางช้างเผือกเชียงคาน คือสวรรค์ของคนรักช้างที่มุ่งเน้นการท่องเที่ยวเชิงอนุรักษ์และให้ความสำคัญกับสวัสดิภาพของช้างเป็นหลัก (Ethical Elephant Care) ที่นี่ไม่ใช่แค่ปางช้างเพื่อการท่องเที่ยวทั่วไป แต่เป็นแหล่งเรียนรู้ที่เปิดโอกาสให้นักท่องเที่ยวได้สัมผัสและเข้าใจ 'ช้าง' อย่างลึกซึ้ง ผ่านการดูแลอย่างถูกวิธีโดยไม่มีการขี่ช้างหรือการแสดงที่ขืนใจนักท่องเที่ยวจะได้สัมผัสประสบการณ์ใกล้ชิดในแบบที่หาชมได้ยาก ตั้งแต่การเตรียมอาหารสุขภาพ, การให้อาหารด้วยมือตนเอง, ไปจนถึงการพาช้างไปอาบน้ำและสปาโคลนที่ริมแม่น้ำโขง พร้อมทั้งเรียนรู้วิถีชีวิตอันผูกพันของ 'ควาญช้าง' ที่ดูแลช้างเสมือนสมาชิกในครอบครัว ท่ามกลางบรรยากาศธรรมชาติที่สวยงามและสงบเงียบของเชียงคานครับ"
+
+document.getElementById("listenBtn").innerText="🎧 ฟังคำบรรยาย"
+document.getElementById("prevBtn").innerText="⬅ ก่อนหน้า"
+document.getElementById("finishBtn").innerText="🏠 เลือกสถานที่"
+document.getElementById("backBtn").innerText="⬅ กลับ"
+
+voice.src="PT6.mp3"
+
+}
+
+}
+
+/* เล่นเสียง */
+
+function playAudio(){
+
+let voice = document.getElementById("voice")
+
+voice.currentTime = 0
+voice.play()
+
+}
+
+/* navigation */
+
+function prev(){
+window.location.href="place5.html"
+}
+
+function finish(){
+window.location.href="tour.html"
+}
+
+/* โหลดภาษา */
+
+window.onload=function(){
+
+let lang = localStorage.getItem("lang") || "th"
+changeLang(lang)
+
+}
+
+</script>
+
+</body>
+</html>
+

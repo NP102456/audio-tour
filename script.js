@@ -10,9 +10,11 @@ function changeLang(lang){
 
 let voice=document.getElementById("voice")
 
+document.querySelector("select").value = lang
+
 if(lang==="en"){
 
-document.getElementById("title").innerText="Tha Di Mi – A New Way of Life"
+document.getElementById("title").innerText="Tha Dee Mee: The New Way"
 
 document.getElementById("listenBtn").innerText="🎧 Listen"
 

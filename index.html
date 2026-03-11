@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -5,68 +6,115 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
 
 <title>Tour Guide</title>
 
 <style>
 
-body{
+*{
+box-sizing:border-box;
 margin:0;
-font-family:Arial;
+padding:0;
+}
+
+body{
+
+font-family:"Segoe UI", Arial, sans-serif;
 color:white;
 text-align:center;
 
-background-image:url("12.png");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
 height:100vh;
+
+background:black;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
 }
 
-.lang-box{
-position:absolute;
-top:20px;
-right:20px;
-}
-
-.lang-box select{
-padding:8px;
-border-radius:8px;
-border:none;
-}
+/* กรอบมือถือ */
 
 .overlay{
-background:rgba(0,0,0,0.5);
+
+width:100%;
+max-width:420px;
 height:100vh;
+
+/* รูปพื้นหลังอยู่เฉพาะในกรอบมือถือ */
+
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("index.png");
+
+background-size:100% 100%;
+background-position:center;
+background-repeat:no-repeat;
 
 display:flex;
 flex-direction:column;
 justify-content:space-between;
 align-items:center;
 
-padding:40px 20px;
+padding:30px 20px;
+
+position:relative;
+
 }
+
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+font-size:14px;
+
+}
+
+/* title */
 
 h1{
-margin-top:20px;
-font-size:60px;
+
+font-size:34px;
+margin-top:50px;
+
+text-shadow:0 4px 10px rgba(0,0,0,0.6);
+
 }
 
+/* middle */
+
 .middle{
-margin-top:auto;
-margin-bottom:auto;
+
+flex:1;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 }
 
 /* PLAY BUTTON */
 
 .play-btn{
 
-width:110px;
-height:110px;
+width:120px;
+height:120px;
 
 border-radius:50%;
 
-font-size:48px;
+font-size:50px;
 
 background:linear-gradient(45deg,#ff9800,#ff5722);
 
@@ -75,19 +123,18 @@ align-items:center;
 justify-content:center;
 
 border:none;
-
 color:white;
 
 cursor:pointer;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 
-transition:0.3s;
+transition:0.25s;
 
 }
 
 .play-btn:hover{
-transform:scale(1.1);
+transform:scale(1.08);
 }
 
 .play-btn:active{
@@ -98,12 +145,12 @@ transform:scale(0.9);
 
 .next-btn{
 
-width:90px;
-height:90px;
+width:80px;
+height:80px;
 
 border-radius:50%;
 
-font-size:38px;
+font-size:34px;
 
 background:linear-gradient(45deg,#2196F3,#1565C0);
 
@@ -117,20 +164,42 @@ color:white;
 
 cursor:pointer;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
-transition:0.3s;
+margin-bottom:10px;
 
-margin-bottom:20px;
+transition:0.25s;
 
 }
 
 .next-btn:hover{
-transform:scale(1.1);
+transform:scale(1.08);
 }
 
 .next-btn:active{
 transform:scale(0.9);
+}
+
+/* mobile */
+
+@media(max-width:380px){
+
+h1{
+font-size:28px;
+}
+
+.play-btn{
+width:100px;
+height:100px;
+font-size:40px;
+}
+
+.next-btn{
+width:70px;
+height:70px;
+font-size:28px;
+}
+
 }
 
 </style>
@@ -138,6 +207,8 @@ transform:scale(0.9);
 </head>
 
 <body>
+
+<div class="overlay">
 
 <div class="lang-box">
 
@@ -148,14 +219,12 @@ transform:scale(0.9);
 
 </div>
 
-<div class="overlay">
-
 <h1 id="title">ท่าดีหมีวิถีใหม่</h1>
 
 <div class="middle">
 
 <button class="play-btn" onclick="playAudio()" id="listenBtn">
-▶
+🎧
 </button>
 
 </div>
@@ -172,3 +241,4 @@ transform:scale(0.9);
 
 </body>
 </html>
+

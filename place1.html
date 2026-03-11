@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -6,117 +7,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>สกายวอร์คพระใหญ่ภูคกงิ้ว</title>
+<title>สกายวอล์คเชียงคาน</title>
 
 <style>
 
 *{
 box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-
-margin:0;
+background:black;
 font-family:"Segoe UI", Arial;
+display:flex;
+justify-content:center;
 color:white;
-
-background-image:url("sky.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
 }
 
-/* overlay */
+/* mobile frame */
 
 .overlay{
 
-background:rgba(0,0,0,0.55);
-
+width:100%;
+max-width:420px;
 min-height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("p1.png");
+
+background-size:cover;
+background-position:center;
+
+padding:40px 20px;
 
 display:flex;
 flex-direction:column;
-
 align-items:center;
 justify-content:center;
-
-padding:40px 20px;
 
 position:relative;
 
 }
 
-/* ปุ่มกลับ */
+/* language */
+
+.lang-box{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-box select{
+padding:6px 10px;
+border-radius:10px;
+border:none;
+}
+
+/* back */
 
 .back{
-
 position:absolute;
-top:20px;
-left:20px;
-
-padding:10px 18px;
-
-border-radius:30px;
+top:15px;
+left:15px;
 
 background:rgba(255,255,255,0.2);
 
-backdrop-filter:blur(8px);
+padding:8px 12px;
+
+border-radius:10px;
 
 color:white;
 text-decoration:none;
-
-font-size:14px;
-
-transition:0.3s;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-}
-
-.back:hover{
-
-background:rgba(255,255,255,0.35);
-
-transform:scale(1.05);
-
 }
 
 /* title */
 
 h1{
-
+font-size:26px;
 text-align:center;
-
-font-size:34px;
-
 margin-bottom:20px;
-
-text-shadow:0 3px 10px rgba(0,0,0,0.6);
-
 }
 
-/* text box */
+/* description */
 
 .text{
 
-max-width:650px;
+background:rgba(255,255,255,0.15);
 
-background:rgba(255,255,255,0.12);
-
-backdrop-filter:blur(8px);
-
-padding:25px;
+padding:20px;
 
 border-radius:15px;
 
-font-size:17px;
-
-line-height:1.7;
-
 text-align:center;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+line-height:1.6;
 
 }
 
@@ -124,32 +110,14 @@ box-shadow:0 10px 25px rgba(0,0,0,0.4);
 
 .buttons{
 
+margin-top:30px;
+
 display:flex;
 flex-direction:column;
 
+gap:20px;
+
 align-items:center;
-
-gap:18px;
-
-margin-top:35px;
-
-}
-
-/* button style */
-
-button{
-
-padding:14px 26px;
-
-border:none;
-
-border-radius:30px;
-
-font-size:16px;
-
-cursor:pointer;
-
-transition:0.25s;
 
 }
 
@@ -159,48 +127,42 @@ transition:0.25s;
 
 background:linear-gradient(45deg,#ff9800,#ffb74d);
 
+border:none;
+
+padding:14px 30px;
+
+border-radius:30px;
+
 color:white;
 
-box-shadow:0 6px 18px rgba(0,0,0,0.4);
+font-size:16px;
+
+cursor:pointer;
 
 }
 
-.listen:hover{
+/* navigation */
 
-transform:scale(1.08);
+.nav{
+
+display:flex;
+gap:20px;
 
 }
-
-/* next */
 
 .next{
 
 background:linear-gradient(45deg,#00bcd4,#26c6da);
 
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
 color:white;
 
-box-shadow:0 6px 18px rgba(0,0,0,0.4);
-
-}
-
-.next:hover{
-
-transform:translateY(-3px);
-
-}
-
-/* mobile */
-
-@media(max-width:600px){
-
-h1{
-font-size:26px;
-}
-
-.text{
-font-size:15px;
-padding:18px;
-}
+cursor:pointer;
 
 }
 
@@ -212,45 +174,117 @@ padding:18px;
 
 <div class="overlay">
 
-<a class="back" href="tour.html">⬅ กลับ</a>
+<div class="lang-box">
+<select id="langSelect" onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
 
-<h1>สกายวอร์คพระใหญ่ภูคกงิ้ว</h1>
+<a class="back" id="backBtn" href="tour.html">⬅ กลับ</a>
 
-<div class="text">
+<h1 id="title">สกายวอล์คเชียงคาน</h1>
 
-สกายวอร์คเชียงคาน เป็นจุดชมวิวแม่น้ำโขงที่สวยงาม  
-ตั้งอยู่บนภูคกงิ้ว นักท่องเที่ยวสามารถเดินชมวิวผ่านพื้นกระจกใส  
-มองเห็นแม่น้ำโขงและภูเขาฝั่งลาวได้อย่างชัดเจน
+<div class="text" id="desc">
+
+เป็นจุดชมวิวพาโนรามาในมุมสูง 360 องศา ของบริเวณสามเหลี่ยมน้ำเหืองไหลมาบรรจบกับน้ำโขง มองเห็นเป็นแม่น้ำสองสีอย่างชัดเจนในเดือนพฤษภาคม-มิถุนายน มองเห็นประเทศลาว หมู่บ้านใหม่เวินคำ เมืองแก่นท้าว แขวงไซยะบุรี และเมืองชนะคาม แขวงเวียงจันทน์ ฝั่ง สปป.ลาว นอกจากนี้ยังเป็นจุดชมพระอาทิตย์ตกดินที่สวยงาม
 
 </div>
 
 <div class="buttons">
 
-<button class="listen" onclick="playAudio()">
+<button class="listen" id="listenBtn" onclick="playAudio()">
 🎧 ฟังคำบรรยาย
 </button>
 
-<button class="next" onclick="next()">
-➡ สถานที่ถัดไป
-</button>
+<div class="nav">
+
+<button class="next" id="nextBtn" onclick="next()">➡ ถัดไป</button>
 
 </div>
 
-<audio id="voice" src="place1-th.mp3"></audio>
+</div>
+
+<audio id="voice" src="PT1.mp3" preload="auto"></audio>
 
 </div>
 
 <script>
 
+function setLang(lang){
+
+localStorage.setItem("lang",lang)
+changeLang(lang)
+
+}
+
+function changeLang(lang){
+
+let voice=document.getElementById("voice")
+
+document.getElementById("langSelect").value=lang
+
+if(lang==="en"){
+
+document.getElementById("title").innerText="Chiang Khan Skywalk"
+
+document.getElementById("desc").innerText=
+"It is a 360-degree panoramic viewpoint where the Hueang River meets the Mekong River. Visitors can see the beautiful two-colored river clearly between May and June. The view stretches across to Laos including Ban Mai Vern Kham, Mueang Kaen Thao in Xayaboury Province, and Mueang Chana Kham in Vientiane Province. It is also a popular sunset viewpoint."
+
+document.getElementById("listenBtn").innerText="🎧 Listen"
+
+document.getElementById("nextBtn").innerText="➡ Next"
+
+document.getElementById("backBtn").innerText="⬅ Back"
+
+voice.src="PE1.mp3"
+
+}
+
+else{
+
+document.getElementById("title").innerText="สกายวอล์คเชียงคาน"
+
+document.getElementById("desc").innerText=
+"เป็นจุดชมวิวพาโนรามาในมุมสูง 360 องศา ของบริเวณสามเหลี่ยมน้ำเหืองไหลมาบรรจบกับน้ำโขง มองเห็นเป็นแม่น้ำสองสีอย่างชัดเจนในเดือนพฤษภาคม-มิถุนายน มองเห็นประเทศลาว หมู่บ้านใหม่เวินคำ เมืองแก่นท้าว แขวงไซยะบุรี และเมืองชนะคาม แขวงเวียงจันทน์ ฝั่ง สปป.ลาว นอกจากนี้ยังเป็นจุดชมพระอาทิตย์ตกดินที่สวยงาม"
+
+document.getElementById("listenBtn").innerText="🎧 ฟังคำบรรยาย"
+
+document.getElementById("nextBtn").innerText="➡ ถัดไป"
+
+document.getElementById("backBtn").innerText="⬅ กลับ"
+
+voice.src="PT1.mp3"
+
+}
+
+}
+
 function playAudio(){
-document.getElementById("voice").play()
+
+let voice=document.getElementById("voice")
+
+voice.currentTime=0
+voice.play()
+
 }
 
 function next(){
+
 window.location.href="place2.html"
+
+}
+
+window.onload=function(){
+
+let lang=localStorage.getItem("lang") || "th"
+
+changeLang(lang)
+
 }
 
 </script>
 
 </body>
 </html>
+

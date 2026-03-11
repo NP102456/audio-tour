@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -6,77 +7,90 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>วิสาหกิจชุมชนจานกาบหมากท่าดีหมี</title>
+<title>แม่น้ำเหือง</title>
 
 <style>
 
 *{
 box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-margin:0;
-font-family:"Segoe UI", Arial;
-color:white;
 
-background-image:url("p2.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
+background:black;
+
+font-family:"Segoe UI", Arial;
+
+display:flex;
+justify-content:center;
+
 }
 
-/* overlay */
+/* mobile frame */
 
 .overlay{
 
-background:rgba(0,0,0,0.55);
+width:100%;
+max-width:420px;
 
 min-height:100vh;
 
-display:flex;
-flex-direction:column;
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("p2.png");
 
-align-items:center;
-justify-content:center;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
 
-padding:40px 20px;
+padding:30px 20px;
 
 position:relative;
 
+color:white;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
 }
 
-/* ปุ่มกลับ */
+/* language */
+
+.lang-box{
+
+position:absolute;
+top:15px;
+right:15px;
+
+}
+
+.lang-box select{
+
+padding:6px 10px;
+border-radius:10px;
+border:none;
+
+}
+
+/* back */
 
 .back{
 
 position:absolute;
-top:20px;
-left:20px;
-
-padding:10px 18px;
-
-border-radius:30px;
+top:15px;
+left:15px;
 
 background:rgba(255,255,255,0.2);
 
-backdrop-filter:blur(8px);
+padding:8px 12px;
+
+border-radius:10px;
 
 color:white;
 text-decoration:none;
-
-font-size:14px;
-
-transition:0.3s;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-}
-
-.back:hover{
-
-background:rgba(255,255,255,0.35);
-
-transform:scale(1.05);
 
 }
 
@@ -84,53 +98,31 @@ transform:scale(1.05);
 
 h1{
 
+margin-top:70px;
+
+font-size:28px;
+
 text-align:center;
-
-font-size:34px;
-
-margin-bottom:20px;
-
-text-shadow:0 3px 10px rgba(0,0,0,0.6);
 
 }
 
 /* description */
 
-.text{
+.desc{
 
-max-width:650px;
+margin-top:20px;
 
-background:rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.15);
 
-backdrop-filter:blur(8px);
-
-padding:25px;
+padding:18px;
 
 border-radius:15px;
 
-font-size:17px;
-
-line-height:1.7;
+font-size:15px;
 
 text-align:center;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-
-}
-
-/* buttons container */
-
-.buttons{
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-gap:20px;
-
-margin-top:35px;
+line-height:1.6;
 
 }
 
@@ -138,124 +130,64 @@ margin-top:35px;
 
 .listen{
 
+margin-top:35px;
+
 background:linear-gradient(45deg,#ff9800,#ffb74d);
 
 color:white;
 
-font-size:18px;
+font-size:16px;
 
-padding:16px 32px;
-
-border:none;
-
-border-radius:40px;
-
-cursor:pointer;
-
-box-shadow:0 8px 20px rgba(0,0,0,0.4);
-
-transition:0.3s;
-
-}
-
-.listen:hover{
-
-transform:scale(1.08);
-
-}
-
-/* navigation group */
-
-.nav{
-
-display:flex;
-
-justify-content:space-between;
-
-width:320px;
-
-}
-
-/* prev button */
-
-.prev{
-
-background:rgba(255,255,255,0.15);
-
-color:white;
+padding:14px 28px;
 
 border:none;
-
-padding:14px 24px;
 
 border-radius:30px;
 
-font-size:16px;
+cursor:pointer;
+
+}
+
+/* navigation */
+
+.nav{
+
+margin-top:25px;
+
+display:flex;
+gap:20px;
+
+}
+
+.prev{
+
+background:rgba(255,255,255,0.25);
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+color:white;
 
 cursor:pointer;
 
-backdrop-filter:blur(6px);
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-transition:0.3s;
-
 }
-
-.prev:hover{
-
-background:rgba(255,255,255,0.3);
-
-transform:translateY(-3px);
-
-}
-
-/* next button */
 
 .next{
 
 background:linear-gradient(45deg,#00bcd4,#26c6da);
 
-color:white;
-
 border:none;
 
-padding:14px 24px;
+padding:12px 20px;
 
-border-radius:30px;
+border-radius:25px;
 
-font-size:16px;
+color:white;
 
 cursor:pointer;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-
-transition:0.3s;
-
-}
-
-.next:hover{
-
-transform:translateY(-3px);
-
-}
-
-/* mobile */
-
-@media(max-width:600px){
-
-h1{
-font-size:26px;
-}
-
-.text{
-font-size:15px;
-padding:18px;
-}
-
-.nav{
-width:260px;
-}
 
 }
 
@@ -267,54 +199,118 @@ width:260px;
 
 <div class="overlay">
 
-<a class="back" href="tour.html">⬅ กลับ</a>
+<div class="lang-box">
+<select onchange="setLang(this.value)">
+<option value="th">🇹🇭 ไทย</option>
+<option value="en">🇬🇧 English</option>
+</select>
+</div>
 
-<h1>วิสาหกิจชุมชนจานกาบหมากท่าดีหมี</h1>
+<a class="back" id="backBtn" href="tour.html">⬅ กลับ</a>
 
-<div class="text">
+<h1 id="title">แม่น้ำเหือง</h1>
 
-วิสาหกิจชุมชนจานกาบหมากท่าดีหมี เป็นแหล่งเรียนรู้การนำวัสดุธรรมชาติ
-อย่างกาบหมากมาผลิตเป็นจานและภาชนะที่เป็นมิตรต่อสิ่งแวดล้อม
-นักท่องเที่ยวสามารถชมกระบวนการผลิต และเรียนรู้ภูมิปัญญาชุมชน
-รวมถึงสนับสนุนสินค้าท้องถิ่นเพื่อสร้างรายได้ให้กับชุมชน
+<div class="desc" id="desc">
+
+แม่น้ำเหืองเป็นแม่น้ำสำคัญที่ไหลผ่านจังหวัดเลย และเป็นส่วนหนึ่งของเส้นแบ่งเขตแดนระหว่างประเทศไทยกับประเทศลาว ก่อนจะไหลมาบรรจบกับแม่น้ำโขงที่อำเภอเชียงคาน
 
 </div>
 
-<div class="buttons">
-
-<button class="listen" onclick="playAudio()">
+<button class="listen" id="listenBtn" onclick="playAudio()">
 🎧 ฟังคำบรรยาย
 </button>
 
 <div class="nav">
 
-<button class="prev" onclick="prev()">⬅ ก่อนหน้า</button>
+<button class="prev" id="prevBtn" onclick="prev()">⬅ ก่อนหน้า</button>
 
-<button class="next" onclick="next()">➡ ถัดไป</button>
-
-</div>
+<button class="next" id="nextBtn" onclick="next()">➡ ถัดไป</button>
 
 </div>
 
-<audio id="voice" src="place2-th.mp3"></audio>
+<audio id="voice"></audio>
 
 </div>
 
 <script>
 
+function setLang(lang){
+
+localStorage.setItem("lang",lang)
+changeLang(lang)
+
+}
+
+function changeLang(lang){
+
+let voice=document.getElementById("voice")
+
+document.querySelector("select").value=lang
+
+if(lang==="en"){
+
+document.getElementById("title").innerText="Hueang River"
+
+document.getElementById("desc").innerText=
+"The Hueang River is a vital waterway flowing through Loei Province, serving as a natural border between Thailand and Laos before converging with the Mekong River in Chiang Khan District.The mouth of the Hueang River is a major tourist highlight, famous for the 'Two-Colored River' phenomenon where the clear waters of the Hueang meet the silty Mekong. This area also showcases the deep-rooted riverside lifestyle, from local fishing and agriculture to its historical role as a primary transportation route. The river remains essential to the natural ecosystem, the economy, and the cultural heritage of the communities along its banks."
+
+document.getElementById("listenBtn").innerText="🎧 Listen"
+document.getElementById("prevBtn").innerText="⬅ Previous"
+document.getElementById("nextBtn").innerText="➡ Next"
+document.getElementById("backBtn").innerText="⬅ Back"
+
+voice.src="PE2.mp3"
+
+}
+
+else{
+
+document.getElementById("title").innerText="แม่น้ำเหือง"
+
+document.getElementById("desc").innerText=
+"แม่น้ำเหือง เป็นแม่น้ำสำคัญที่ไหลผ่านจังหวัดเลย และเป็นส่วนหนึ่งของเส้นแบ่งเขตแดนระหว่างประเทศไทยกับประเทศลาว ก่อนจะไหลมาบรรจบกับแม่น้ำโขงที่อำเภอเชียงคานบริเวณปากแม่น้ำเหืองถือเป็นจุดท่องเที่ยวสำคัญ เพราะสามารถมองเห็น แม่น้ำสองสี จากการที่น้ำเหืองไหลมารวมกับน้ำโขง นอกจากนี้ยังเป็นพื้นที่ที่มีวิถีชีวิตของชุมชนผูกพันกับแม่น้ำ เช่น การประมง การเกษตร และการคมนาคมในอดีตแม่น้ำเหืองจึงมีความสำคัญทั้งด้าน ธรรมชาติ เศรษฐกิจ และวัฒนธรรมของชุมชนริมแม่น้ำ ในจังหวัดเลยและพื้นที่ใกล้เคียง"
+
+document.getElementById("listenBtn").innerText="🎧 ฟังคำบรรยาย"
+document.getElementById("prevBtn").innerText="⬅ ก่อนหน้า"
+document.getElementById("nextBtn").innerText="➡ ถัดไป"
+document.getElementById("backBtn").innerText="⬅ กลับ"
+
+voice.src="PT2.mp3"
+
+}
+
+}
+
 function playAudio(){
-document.getElementById("voice").play()
+
+let voice=document.getElementById("voice")
+
+voice.currentTime=0
+voice.play()
+
 }
 
 function prev(){
+
 window.location.href="place1.html"
+
 }
 
 function next(){
+
 window.location.href="place3.html"
+
+}
+
+window.onload=function(){
+
+let lang=localStorage.getItem("lang") || "th"
+changeLang(lang)
+
 }
 
 </script>
 
 </body>
 </html>
+
